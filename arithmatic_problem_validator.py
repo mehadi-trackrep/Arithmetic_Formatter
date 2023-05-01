@@ -16,5 +16,10 @@ class ArithmaticProblemValidator:
         return True if sub_str else False
     def is_over_size_of_any_operand(self) -> bool:
         for each_problem in self.problems:
-            ...
+            # print("--> each_problem: ", each_problem)
+            temp = re.sub(r'\s', '', each_problem)
+            splitted_list = temp.split('+') if '+' in temp else temp.split('-')
+            if len(splitted_list[0]) > 4 or len(splitted_list[1]) > 4:
+                return True
+        return False
     
